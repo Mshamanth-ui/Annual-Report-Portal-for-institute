@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Course Files</title>
+  <style>body{font-family:Arial;background:#fff;margin:0;padding:20px}ul{padding-left:20px}a{color:#0ea5e9;text-decoration:none}</style>
+</head>
+<body>
+  <h1>Available Course Files</h1>
+  <ul>
+    <li th:each="f : ${files}"><a th:href="@{'/files/download/' + ${f}}" th:text="${f}">file</a></li>
+  </ul>
+  <p><a href="/student">Back to dashboard</a></p>
+</body>
+</html>
+
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Course Files</title>
+  <style>body{font-family:Arial;background:#fff;margin:0;padding:20px}ul{padding-left:20px}a{color:#0ea5e9;text-decoration:none}form{margin:12px 0}</style>
+</head>
+<body>
+  <h1>Course Files</h1>
+  <form method="post" enctype="multipart/form-data" action="/faculty/files/upload">
+    <input type="file" name="file" required />
+    <button type="submit">Upload</button>
+  </form>
+  <ul>
+    <li th:each="f : ${files}"><a th:href="@{'/files/download/' + ${f}}" th:text="${f}">file</a></li>
+  </ul>
+  <p><a href="/faculty">Back to dashboard</a></p>
+</body>
+</html>
+
+

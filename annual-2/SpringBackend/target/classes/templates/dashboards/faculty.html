@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Faculty Dashboard</title>
+  <style>body{font-family:Arial;background:#f5f7fb;margin:0}header{background:#22c55e;color:#001423;padding:16px;font-weight:700}main{padding:20px}a,button{display:inline-block;margin:8px 8px 0 0;padding:10px 12px;background:#111827;color:#e5e7eb;border-radius:8px;text-decoration:none;border:none;cursor:pointer}
+  section{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px;margin-top:14px}
+  input,select{padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px}
+  table{width:100%;border-collapse:collapse;margin-top:10px}
+  th,td{border:1px solid #e5e7eb;padding:8px;text-align:left}
+  </style>
+  </head>
+<body>
+  <header>Faculty</header>
+  <main>
+    <a href="/faculty/reports">Annual Reports</a>
+
+    <section>
+      <h3>Upload Course Files</h3>
+      <form method="post" enctype="multipart/form-data" action="/faculty/files/upload">
+        <input type="file" name="file" required />
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <button type="submit">Upload</button>
+      </form>
+      <p style="margin-top:8px"><a href="/faculty/files">View all files</a></p>
+    </section>
+
+    <section>
+      <h3>Mark Attendance (Roll 1 to 50)</h3>
+      <p>Select date and mark present for each roll.</p>
+      <div style="margin:8px 0">
+        <label>Date: <input type="date" id="attDate" /></label>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Roll</th><th>Present</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>
+              <form method="post" action="/faculty/attendance/mark">
+                <input type="hidden" name="studentId" value="1" />
+                <input type="date" name="date" th:value="${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" />
+                <label><input type="checkbox" name="present" /> Present</label>
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button type="submit">Save</button>
+              </form>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>
+              <form method="post" action="/faculty/attendance/mark">
+                <input type="hidden" name="studentId" value="2" />
+                <input type="date" name="date" th:value="${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" />
+                <label><input type="checkbox" name="present" /> Present</label>
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button type="submit">Save</button>
+              </form>
+            </td>
+            <td></td>
+          </tr>
+          <!-- Repeat rows up to 50 -->
+          <tr>
+            <td>3</td>
+            <td>
+              <form method="post" action="/faculty/attendance/mark">
+                <input type="hidden" name="studentId" value="3" />
+                <input type="date" name="date" th:value="${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" />
+                <label><input type="checkbox" name="present" /> Present</label>
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button type="submit">Save</button>
+              </form>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>
+              <form method="post" action="/faculty/attendance/mark">
+                <input type="hidden" name="studentId" value="4" />
+                <input type="date" name="date" th:value="${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" />
+                <label><input type="checkbox" name="present" /> Present</label>
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button type="submit">Save</button>
+              </form>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>
+              <form method="post" action="/faculty/attendance/mark">
+                <input type="hidden" name="studentId" value="5" />
+                <input type="date" name="date" th:value="${#dates.format(#dates.createNow(),'yyyy-MM-dd')}" />
+                <label><input type="checkbox" name="present" /> Present</label>
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button type="submit">Save</button>
+              </form>
+            </td>
+            <td></td>
+          </tr>
+          <!-- For brevity, consider generating rows server-side or with a loop later -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
+
+

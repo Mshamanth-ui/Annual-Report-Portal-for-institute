@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>My Attendance</title>
+  <style>body{font-family:Arial;background:#fff;margin:0;padding:20px}ul{padding-left:20px}</style>
+</head>
+<body>
+  <h1>Attendance</h1>
+  <ul>
+    <li th:each="r : ${rows}" th:text="${r}">row</li>
+  </ul>
+  <p><a href="/student">Back to dashboard</a></p>
+</body>
+</html>
+
+
